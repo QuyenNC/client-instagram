@@ -1,0 +1,54 @@
+.Header{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: white;
+    padding-top: 15px;
+    overflow: hidden;
+    position: fixed;
+    top:0;
+}
+.logo{
+    width: 20%;
+    height: 100%;
+    padding-left: 15px;
+}
+.logo img{
+    width: 80%;
+    height: 70%;
+}
+.input{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+input {
+    width: 40%;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    background-color: rgba(241, 239, 239, 0.705);
+  }
+input:focus {
+    text-align:left;
+}
+.action-icon{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    width: 30%;
+}
+.action-icon  img{
+    overflow: hidden;
+    width: 25px;
+    height: 25px;
+}
