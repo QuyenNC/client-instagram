@@ -1,0 +1,95 @@
+.f-infor-tab{
+    width: 100%;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0.863);
+}
+.f-infor-col_10 img{
+    width: 100%;
+}
+.f-infor-col_14{
+    width: 100%;
+    align-self: center;
+}
+.f-infor-col_14 h3{
+    display: flex;
+    font-weight: 700;
+    font-size: 18px;
+    justify-content: center;
+    width: 100%;
+    opacity: 0.9;
+}
+.f-infor-col_14 p{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.f-infor-col_16--img{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.f-infor-col_16--img img{
+    width: 30%;
+}
+.f-infor-upload{
+    width: 100%;
+    align-self: center;
+    padding-left: 180px;
+}
+.input-upload{
+    width: 200px;
+    height: 200px;
+    padding-top: 70px;
+    padding-left: 80px;
+    border: 1px dashed rgb(192, 190, 190) ;
+    border-radius: 2px;
+}
+.input-upload:hover{
+    border: 1px dashed rgb(41, 122, 216) ;
+    cursor: pointer;
+}
+.test{
+    transform: translate(-10%, 0);
+    word-wrap: break-word;
+}
+.f-infor-input{
+    align-self: center;
+}
+.f-infor-input label{
+    width: 100%;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0.8;
+}
+.f-infor-input input[type=text]{
+    width: 80%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.f-infor-input input[type=submit]{
+    width: 30%;
+    padding: 10px 0px 35px 0px;
+    background-color: rgba(15, 34, 201, 0.87);
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+}
+.f-infor-input textarea{
+    border: 1px solid rgb(193 190 190);
+    width: 80%;
+    resize: none;
+    padding: 5px;
+    height: 100px;
+}
+.ant-tabs{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.ant-tabs-content-holder{
+    order:1 !important;
+}
+.ant-tabs-nav{
+    margin: 0 auto !important;
+}

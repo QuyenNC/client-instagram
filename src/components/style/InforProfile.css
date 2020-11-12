@@ -1,0 +1,102 @@
+.h-infor{
+    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+.h-infor-col_8{
+    padding: 40px 40px 20px 40px;
+}
+.infor{
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+.infor .i-name {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgba(var(--i1d,38,38,38),1);
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 32px;
+    margin: -5px 0 -6px;
+}
+.h-infor-col_16{
+    padding: 40px 40px 20px 40px;
+}
+.i-edit{
+    margin-left: 30px;
+}
+.i-edit span{
+    border: 1px solid rgba(var(--ca6,219,219,219),1);
+    color: rgba(var(--f75,38,38,38),1);
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    font-weight: 600;
+    padding: 5px 9px;
+    text-align: center;
+    text-transform: inherit;
+    text-overflow: ellipsis;
+}
+.follow{
+    list-style: none;
+    display: flex;
+    margin-bottom: 20px;
+}
+.follow li{
+    font-size: 20px;
+    margin-right: 40px;
+}
+.follow li span{
+    color: rgba(var(--i1d,38,38,38),1);
+    font-weight: 600;
+    margin-right: 10px;
+}
+.f-name{
+    font-size: 16px;
+    display: inline;
+    font-weight: 600;
+}
+
+
+.t-label_avartar{
+    padding: 10px;
+}
+.t-label{
+    text-align: right;
+    padding-right: 15px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.t-input_file{
+    width: 100%;
+}
+.t-input_file h2{
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+}
+.t-input_file h3{
+    color: rgb(40, 126, 224);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.t-input{
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: none;
+    
+}
+.t-input input{
+    width: 80%;
+    border: none;
+}
+.t-input input:focus{
+    outline: none;
+}
+.t-input .readonly:hover{
+    cursor: no-drop;
+}

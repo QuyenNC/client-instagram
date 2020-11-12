@@ -4,13 +4,16 @@ import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 
 
 import Login from './components/login/Login';
-import Register from './components/register/Register';
+import Register from './components/login/Register';
+import Forgot from './components/login/Forgot';
+import Profile from './components/profile/Profile';
+import IndexRoute from './components/page/index';
 
-import Index from './components/page/index';
+
+import NewFeed from './components/NewFeed/NewFeed';
 class App extends Component {
 render(){
     return (
-      <div className="App">
         <Router>
             <Switch>
               <Route path="/register">
@@ -19,12 +22,13 @@ render(){
               <Route path="/login">
                 <Login />
               </Route>
-              <Route path="/">
-                <Index />
+              <Route path="/forgot">
+                <Forgot />
               </Route>
+              <IndexRoute exact path="/" component={<NewFeed />} />
+              <IndexRoute exact path="/profile" component={<Profile />} />
             </Switch>
         </Router>
-      </div>
     );
   }
 }

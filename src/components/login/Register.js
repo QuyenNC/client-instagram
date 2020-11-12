@@ -1,31 +1,46 @@
 import React ,{Component} from 'react';
+import axios from 'axios';
 import { Redirect , Link} from "react-router-dom";
 import logo from '../image/logo.svg.png'
 import '../style/Register.css';
 import 'antd/dist/antd.css';
-import {Form, Input, Button} from 'antd';
+import {Form, Input, Button, message} from 'antd';
 
 class Register extends Component{
     constructor(){
         super();
-        const token = localStorage.getItem('username');
+        const token = localStorage.getItem('token');
         let isLogin = true;
         if(token === null){
           isLogin = false
         } 
         this.state={
             isRegister : false,
-            isLogin : isLogin  
+            isLogin : isLogin,
+            isLoading : false  
         }
     this.onFinish = this.onFinish.bind(this);
     }
     onFinish(values){
-        const isRegister = this.state.isRegister;
-        localStorage.setItem('userReg', JSON.stringify(values));
         this.setState({
-            isRegister : !isRegister
+            isLoading : true
         })
-        console.log('Received values of form: ', JSON.stringify(values));
+        const url = '/api/auth/register';
+        axios.post(url,values)
+        .then((res) => {
+            if(res.data.errors){
+                return message.error(res.data.errors.msg);
+            }else{
+                this.setState({
+                    isRegister : true,
+                    isLoading : false
+                })
+                return message.success(res.data.success.msg);
+            }
+        })
+        .catch((error)=> {
+            console.log(error);
+        });
     }
    render(){
        if(this.state.isLogin){
@@ -35,7 +50,7 @@ class Register extends Component{
             return <Redirect to="/login"/>
        }
        return(
-           <div className="Register">
+           <div className="Register">           
                <div className="form">
                     <div className="logo-re">
                         <img src={logo} alt="Logo - Instagram"/>
@@ -70,7 +85,7 @@ class Register extends Component{
                                     rules={[
                                     {
                                         required: true,
-                                        message: 'Please input your nickname!',
+                                        message: 'Please input your fullname!',
                                         whitespace: true,
                                     },
                                     ]}
@@ -84,7 +99,7 @@ class Register extends Component{
                                     rules={[
                                     {
                                         required: true,
-                                        message: 'Please input your nickname!',
+                                        message: 'Please input your username!',
                                         whitespace: true,
                                     },
                                     ]}
@@ -110,7 +125,7 @@ class Register extends Component{
                                 </Form.Item>
                             
                                 <Form.Item  className="input-control">
-                                    <Button type="primary" htmlType="submit" className="btn ">
+                                    <Button type="primary" loading={this.state.isLoading} htmlType="submit" className="btn ">
                                         Register
                                     </Button>
                                 </Form.Item>

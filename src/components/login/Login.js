@@ -1,15 +1,16 @@
 import React ,{Component} from 'react';
+import axios from 'axios';
 import { Redirect , Link} from "react-router-dom";
 import '../style/Login.css';
 import logo from '../image/logo.svg.png';
 import 'antd/dist/antd.css';
-import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Checkbox, message , Spin } from 'antd';
+import { UserOutlined, LockOutlined , LoadingOutlined } from '@ant-design/icons';
 
 class Login extends Component{
-    constructor(props){
-        super(props);
-        const token = localStorage.getItem('username');
+    constructor(){
+        super();
+        const token = localStorage.getItem('token');
         let isLogin = true;
         if(token === null){
           isLogin = false
@@ -17,32 +18,33 @@ class Login extends Component{
         this.state={
             userName : '',
             passWord : '',
-            isLogin : isLogin   
+            isLogin : isLogin,
+            isLoading : false
         }
         this.onFinish = this.onFinish.bind(this);
-        this.onChange = this.onChange.bind(this);
     }
     onFinish = values => {
         let isLogin = this.state.isLogin;
-        const userReg = JSON.parse(localStorage.getItem('userReg'));
-        console.log(values.password === userReg.password);
-        if(values.username === userReg.username && values.password === userReg.password){
-            localStorage.setItem('username',JSON.stringify(values.username) );
-            this.setState({
-                userName : values.username,
-                passWord : values.password,
-                isLogin : !isLogin
-            })
-            
-        }
+        const url = '/api/auth/login';
+        axios.post(url,values)
+        .then((res) => {
+            if(res.data.errors){
+                return message.error(res.data.errors.msg);
+            }else{
+                localStorage.setItem('token',JSON.stringify(res.data.success.username));
+                this.setState({
+                    isLogin : !isLogin,
+                    isLoading: true
+                })
+                return message.success(res.data.success.msg);
+            }
+        })
+        .catch((error)=> {
+            console.log(error);
+        });
     };
-    onChange(){
-        // this.setState({
-        //     userName : '',
-        //     passWord : ''
-        // })
-    }
     render() {
+        const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
         if(this.state.isLogin ){
           return  <Redirect to="/" />;
         }
@@ -97,16 +99,22 @@ class Login extends Component{
                                 <Form.Item name="remember" valuePropName="checked" noStyle>
                                     <Checkbox>Remember me</Checkbox>
                                 </Form.Item>
-                        
-                                <a className="login-form-forgot" href="##">
-                                    Forgot password
-                                </a>
+                                <Link className="login-form-forgot" to="/forgot">Forgot password</Link>
                             </Form.Item>
-                    
                             <Form.Item>
-                                <Button type="primary" htmlType="submit" className="login-form-button">
-                                Log in
-                                </Button>
+                                {
+                                    this.state.isLoading === true ? (
+                                        <Button type="primary" htmlType="submit" className="login-form-button">
+                                            <Spin indicator={antIcon} />
+                                            Log in
+                                        </Button>
+                                    ) : (
+                                        <Button type="primary" htmlType="submit" className="login-form-button">
+                                            Log in
+                                        </Button> 
+                                    )
+                                }
+                                
                             </Form.Item>
                         </Form>
                         </div>

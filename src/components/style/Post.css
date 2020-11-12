@@ -17,12 +17,13 @@
     height: 30px;
     display: flex;
     justify-content: space-between;
-
+    
 }
 .user img{
     width: 36px;
     height: 36px;
     cursor: pointer;
+    border-radius: 100%;
 }
 .user span{
     display: flex;
@@ -87,6 +88,11 @@
     font-size: 15px;
     margin-left: 10px;
 }
+.description{
+    width: 100%;
+    display: flex;
+    padding-left: 15px;
+}
 .comment-text{
     width: 100%;
     display: flex;
@@ -99,6 +105,12 @@
 .comment-text p{
     font-size: 15px;
     margin-left: 10px;
+    margin-right: 10px;
+}
+.comment-text span{
+    font-size: 15px;
+    cursor: pointer;
+    color: rgba(34, 19, 243, 0.918);
 }
 .time-post{
     margin-top: 0px;
