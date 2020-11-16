@@ -2,7 +2,7 @@
 
 > Clone lại trang instagram sau khi học xong khóa học CoderX
 
-# Functionality
+- link back-end :https://github.com/QuyenNC/server-instagram.git
 
 ## Auth
 
